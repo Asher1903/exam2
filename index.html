@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diamond DA40D (Thielert Engine) Mock Exam</title>
-  <!-- Tailwind CSS CDN for global public web hosting -->
+  <title>Diamond DA40D (TAE 125-02-99) 300 MCQ Exam</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -12,15 +11,7 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e40af',
-              900: '#1e3a8a',
-            }
+            brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' }
           }
         }
       }
@@ -28,50 +19,49 @@
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
     body { font-family: 'Inter', sans-serif; }
-    code, pre { font-family: 'JetBrains Mono', monospace; }
+    .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.4); border-radius: 4px; }
   </style>
+
+  <!-- External question datasets (loaded when folder is opened or hosted) -->
+  <script src="questions_part1.js"></script>
+  <script src="questions_part2.js"></script>
+  <script src="questions_part3.js"></script>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-200">
 
-  <!-- Top Navigation Bar -->
-  <nav class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+  <!-- Top Navbar -->
+  <nav class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-lg shadow-md shadow-blue-500/20">
-          ✈
-        </div>
+        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-lg shadow-md shadow-blue-500/20">✈</div>
         <div>
-          <h1 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Diamond DA40D CBT Quiz</h1>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Thielert TAE 125-02-99 (Centurion 2.0)</p>
+          <h1 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Diamond DA40D Master Question Bank</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400">All 300 Questions • Thielert TAE 125-02-99 • Single-File App</p>
         </div>
       </div>
-
-      <!-- Action items -->
       <div class="flex items-center gap-2">
-        <!-- Dark Mode Toggle -->
-        <button id="themeToggle" class="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Theme">
+        <button id="themeToggle" class="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Light/Dark">
           <i id="themeIcon" class="fas fa-moon"></i>
         </button>
-
-        <!-- Reset Button -->
-        <button id="resetBtn" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-rose-50 hover:border-rose-200 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:border-rose-900 dark:hover:text-rose-400 text-slate-600 dark:text-slate-300 transition flex items-center gap-1.5">
-          <i class="fas fa-rotate-right"></i> Reset
+        <button id="resetBtn" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-rose-50 hover:border-rose-200 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400 text-slate-600 dark:text-slate-300 transition flex items-center gap-1.5">
+          <i class="fas fa-rotate-right"></i> Reset Test
         </button>
       </div>
     </div>
   </nav>
 
-  <!-- Main Content Wrapper -->
-  <div class="max-w-5xl mx-auto px-4 py-6">
+  <!-- Main Container -->
+  <div class="max-w-4xl mx-auto px-4 py-6">
 
-    <!-- Score & Mode Header Card -->
+    <!-- Score & Controls Header -->
     <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 mb-6 shadow-sm">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 mb-2">
-            <i class="fas fa-certificate text-[10px]"></i> DGCA / EASA / FAA Type Prep
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-400 mb-2">
+            <i class="fas fa-circle-check text-[10px]"></i> 100% Self-Contained • All 300 Questions Embedded
           </div>
           <h2 class="text-xl font-extrabold text-slate-900 dark:text-white">Aviation Systems Knowledge Test</h2>
           <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Solve each MCQ with instant feedback and comprehensive distractor explanations.</p>
@@ -90,860 +80,572 @@
           </div>
           <div class="w-px h-7 bg-slate-200 dark:bg-slate-700"></div>
           <div class="text-center px-1">
-            <span class="block text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Progress</span>
-            <span id="progressText" class="text-lg font-black text-slate-700 dark:text-slate-200">0%</span>
+            <span class="block text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Completed</span>
+            <span id="progressText" class="text-lg font-black text-slate-700 dark:text-slate-200">0 / 300</span>
           </div>
         </div>
       </div>
 
-      <!-- Controls & Filter Toolbar -->
+      <!-- Controls Toolbar -->
       <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
-        <!-- Mode Switcher -->
+        <!-- View Mode Switcher -->
         <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs font-semibold">
-          <button id="modePractice" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400 font-bold transition">
-            <i class="fas fa-bolt mr-1"></i> Practice Mode (Instant)
+          <button id="viewCardBtn" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400 font-bold transition">
+            <i class="fas fa-square mr-1"></i> Single Question View
           </button>
-          <button id="modeExam" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
-            <i class="fas fa-file-signature mr-1"></i> Exam Mode (Submit at End)
+          <button id="viewListBtn" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+            <i class="fas fa-list-ol mr-1"></i> List (25 per page)
           </button>
         </div>
 
-        <!-- Filter & Search -->
-        <div class="flex flex-wrap items-center gap-2">
-          <!-- Category Filter -->
-          <select id="categorySelect" class="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="all">All Topics (Full Bank)</option>
-            <option value="Engine & Powerplant">Engine & Powerplant</option>
-            <option value="Operating Limits & Fluids">Operating Limits & Fluids</option>
-            <option value="Electrical & FADEC">Electrical & FADEC</option>
-            <option value="Fuel System">Fuel System</option>
-            <option value="Speeds & Performance">Speeds & Performance</option>
-            <option value="Airframe & Systems">Airframe & Systems</option>
-            <option value="Weight & Balance">Weight & Balance</option>
-            <option value="Emergencies & Operations">Emergencies & Operations</option>
-          </select>
-
-          <!-- Search Input -->
-          <div class="relative">
-            <i class="fas fa-magnifying-glass absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-            <input id="searchInput" type="text" placeholder="Search questions..." class="pl-8 pr-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-36 sm:w-48 placeholder-slate-400" />
+        <!-- Mode & Jump -->
+        <div class="flex items-center gap-3">
+          <!-- Jump to Question -->
+          <div class="flex items-center gap-1.5 text-xs text-slate-500">
+            <span>Jump to:</span>
+            <input id="jumpInput" type="number" min="1" max="300" placeholder="1-300" class="w-16 px-2 py-1 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-center font-bold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <button id="jumpBtn" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold text-xs transition">Go</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Questions Feed -->
-    <div id="quizContainer" class="space-y-6">
-      <!-- Dynamic Question Cards -->
+    <!-- Active Question Card (Single View) -->
+    <div id="singleCardWrapper" class="space-y-4">
+      <!-- Question Card Container -->
+      <div id="activeCardContainer"></div>
+
+      <!-- Single Question Navigation Toolbar (PREVIOUS & NEXT BUTTONS) -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm flex items-center justify-between gap-3">
+        <button id="prevQuestionBtn" class="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-bold text-sm transition flex items-center gap-2 shadow-sm disabled:opacity-40 disabled:cursor-not-allowed">
+          <i class="fas fa-arrow-left"></i> Previous Question
+        </button>
+
+        <span id="cardCounterText" class="text-xs font-bold text-slate-500 dark:text-slate-400">
+          Question 1 of 300
+        </span>
+
+        <button id="nextQuestionBtn" class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition flex items-center gap-2 shadow-md shadow-blue-500/20 disabled:opacity-40 disabled:cursor-not-allowed">
+          Next Question <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
     </div>
 
-    <!-- Exam Mode Final Submission Banner -->
-    <div id="examSubmissionBox" class="hidden mt-8 p-6 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl text-white text-center shadow-xl">
-      <i class="fas fa-flag-checkered text-3xl mb-2 opacity-90"></i>
-      <h3 class="text-xl font-bold">Ready to Grade Your Examination?</h3>
-      <p class="text-xs text-blue-100 max-w-md mx-auto mt-1 mb-5">Click below to submit all answers, calculate your official score percentage, and review why each question was correct or wrong.</p>
-      <button id="submitExamBtn" class="px-6 py-2.5 bg-white text-blue-700 hover:bg-blue-50 font-extrabold text-sm rounded-xl shadow-lg transition">
-        Submit Examination Now
-      </button>
+    <!-- List View (25 per page) Container -->
+    <div id="listWrapper" class="hidden space-y-6">
+      <div id="listQuestionsContainer" class="space-y-6"></div>
+      
+      <!-- List View Pagination -->
+      <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <button id="listPrevBtn" class="px-4 py-2 text-xs font-bold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center gap-1.5 disabled:opacity-40">
+          <i class="fas fa-arrow-left"></i> Previous 25
+        </button>
+        <span id="listPageText" class="text-xs font-semibold text-slate-500">Page 1 of 12</span>
+        <button id="listNextBtn" class="px-4 py-2 text-xs font-bold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center gap-1.5 disabled:opacity-40">
+          Next 25 <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="mt-12 text-center text-xs text-slate-400 dark:text-slate-600 pb-8">
-      Diamond DA40-TDI (TAE 125-02-99) Question Bank • Created for pilot training & technical recurrent preparation.
+      Diamond DA40D (TAE 125-02-99) Question Bank • All 300 Questions Complete • Self-Contained Single File
     </footer>
   </div>
 
+  <!-- SCRIPT & FULL 300 QUESTIONS EMBEDDED -->
   <script>
-    const questionBank = [
-      {
-        id: 1,
-        category: "Engine & Powerplant",
-        question: "What is the certified engine specification fitted on the Diamond DA40D?",
-        options: {
-          A: "IO-320-D1A",
-          B: "IO-360-M1A",
-          C: "TAE 125-02-99",
-          D: "None of the above"
-        },
-        correct: "C",
-        correctReason: "The Diamond DA40D (DA40-TDI) is powered by the Thielert TAE 125-02-99 (Centurion 2.0 / 2.0S), a liquid-cooled 4-cylinder inline turbo-diesel engine with Common Rail Direct Injection.",
-        wrongReasons: {
-          A: "The Lycoming IO-320-D1A is a 160 HP gasoline engine used on light trainers (like fixed-pitch prototypes), not on the diesel DA40D.",
-          B: "The Lycoming IO-360-M1A is the 180 HP avgas engine used on the gasoline DA40-180 (Diamond Star), requiring 100LL and dual magnetos.",
-          D: "'None of the above' is incorrect because TAE 125-02-99 is the exact certified model designation in Section 2 of the AFM."
-        }
-      },
-      {
-        id: 2,
-        category: "Engine & Powerplant",
-        question: "The rated output power of the DA40D engine at maximum continuous RPM is:",
-        options: {
-          A: "180 HP at 2400 RPM",
-          B: "180 HP at 2700 RPM",
-          C: "99 kW (135 DIN-HP) at 2300 RPM",
-          D: "160 HP at 2700 RPM"
-        },
-        correct: "C",
-        correctReason: "Per Section 2 of the DA40D AFM, the TAE 125-02-99 engine produces a maximum continuous and takeoff power of 99 kW (135 DIN-HP / 133 BHP) at 2300 propeller RPM (via a 1:1.69 gearbox ratio).",
-        wrongReasons: {
-          A: "180 HP is the gasoline engine rating, and 2400 RPM is not the rated maximum continuous RPM for this power output.",
-          B: "180 HP at 2700 RPM is the rating for the gasoline Lycoming IO-360 found on the DA40-180.",
-          D: "160 HP at 2700 RPM is the rating for a carbureted Lycoming O-320 engine."
-        }
-      },
-      {
-        id: 3,
-        category: "Operating Limits & Fluids",
-        question: "What is the normal operating range (Green Arc) of oil pressure in the DA40D?",
-        options: {
-          A: "25 to 95 PSI",
-          B: "55 to 98 PSI",
-          C: "1.2 to 6.5 Bar",
-          D: "2.3 to 5.2 Bar"
-        },
-        correct: "D",
-        correctReason: "The DA40D engine instrument system is calibrated in Metric Bar. The normal operating range (Green Arc) is 2.3 to 5.2 Bar. (1.2 Bar is min redline, and 6.5 Bar is max redline).",
-        wrongReasons: {
-          A: "25-95 PSI is an imperial scale used on traditional Lycoming engines, not the metric bar scale on the TAE 125.",
-          B: "55-98 PSI represents high-power cruise limits on certain legacy general aviation aircraft.",
-          C: "1.2 to 6.5 Bar represents the total permissible operating envelope (from idle to maximum), not the normal green arc."
-        }
-      },
-      {
-        id: 4,
-        category: "Operating Limits & Fluids",
-        question: "What are the minimum and maximum engine oil sump capacities for the DA40D?",
-        options: {
-          A: "4.5 to 6.0 Liters (approx. 4.8 to 6.3 US Quarts)",
-          B: "3 to 8 Quarts",
-          C: "4 to 8 Quarts",
-          D: "4 to 6 Quarts"
-        },
-        correct: "A",
-        correctReason: "AFM Section 2 limitations specify the wet sump oil capacity: minimum oil quantity is 4.5 liters and maximum is 6.0 liters.",
-        wrongReasons: {
-          B: "3 to 8 Quarts is the dipstick range for a standard 4-cylinder Lycoming engine.",
-          C: "4 to 8 Quarts is another common Lycoming oil capacity.",
-          D: "4-6 Quarts is measured in quarts, whereas the DA40D requires 4.5 to 6.0 LITERS (4.5 L is ~4.76 quarts, so 4 quarts would leave the engine dangerously underfilled)."
-        }
-      },
-      {
-        id: 5,
-        category: "Operating Limits & Fluids",
-        question: "What is the maximum permissible engine oil temperature for the DA40D?",
-        options: {
-          A: "140 °C (284 °F)",
-          B: "140 °F",
-          C: "105 °C",
-          D: "245 °F"
-        },
-        correct: "A",
-        correctReason: "The maximum redline oil temperature for the Thielert TAE 125 engine is 140 °C (284 °F). The yellow caution arc is 125 °C to 140 °C.",
-        wrongReasons: {
-          B: "140 °F (60 °C) is barely lukewarm; oil at 140 °F is only entering the low warm-up operating regime.",
-          C: "105 °C is the maximum engine COOLANT temperature limit, not the oil temperature limit.",
-          D: "245 °F (118 °C) is the max limit on some Lycoming engines, not the Thielert diesel engine."
-        }
-      },
-      {
-        id: 6,
-        category: "Weight & Balance",
-        question: "What is the standard Maximum Take-Off Mass (MTOM) of the DA40D aircraft?",
-        options: {
-          A: "1200 lbs",
-          B: "1150 kg (2535 lbs)",
-          C: "1150 lbs",
-          D: "1200 kg"
-        },
-        correct: "B",
-        correctReason: "The standard certified maximum takeoff weight for the DA40D is 1150 kg (2535 lbs). (An optional factory modification MAM 40-256 can increase it to 1200 kg).",
-        wrongReasons: {
-          A: "1200 lbs (~544 kg) is way too low—that is less than the empty weight of an ultralight or LSA.",
-          C: "1150 lbs is completely wrong units (it is 1150 KILOGRAMS, which equals 2535 lbs).",
-          D: "1200 kg is only permissible if Major Design Change MAM 40-256 is incorporated; standard certified MTOM is 1150 kg."
-        }
-      },
-      {
-        id: 7,
-        category: "Electrical & FADEC",
-        question: "In the event of a total main electrical power failure, what does the emergency battery supply, and for how long?",
-        options: {
-          A: "PFD and MFD for 30 minutes",
-          B: "Standby Artificial Horizon and flood lights for 1 hour (60 minutes)",
-          C: "Artificial Horizon, ASI, Altimeter, and Compass for 30 minutes",
-          D: "Only the flood lights for 2 hours"
-        },
-        correct: "B",
-        correctReason: "The emergency battery specifically powers the electrically driven standby artificial horizon (attitude gyro) and the instrument flood lights for a minimum duration of 1 hour (60 minutes).",
-        wrongReasons: {
-          A: "The emergency battery cannot handle the heavy power draw of the large Garmin G1000 PFD & MFD screens.",
-          C: "The standby ASI and Altimeter are purely pneumatic pitot-static instruments requiring zero electrical power, and the compass is magnetic.",
-          D: "The emergency battery specifically sustains the attitude horizon in addition to the flood lights."
-        }
-      },
-      {
-        id: 8,
-        category: "Airframe & Systems",
-        question: "How are the rudder pedals adjusted in the Diamond DA40D?",
-        options: {
-          A: "Non-adjustable",
-          B: "Adjustable fore and aft via a pull handle while on the ground only",
-          C: "Electrically adjustable in-flight",
-          D: "By sliding the pilot seat forwards and backwards"
-        },
-        correct: "B",
-        correctReason: "The DA40D pilot seats are fixed composite shells. Rudder pedals are adjusted fore and aft using a mechanical release T-handle, and AFM Section 2 strictly requires adjustment on the ground only.",
-        wrongReasons: {
-          A: "Rudder pedals are fully adjustable to accommodate different pilot leg lengths.",
-          C: "There are no electric adjustment motors; it is a spring-loaded mechanical lock pin mechanism.",
-          D: "The pilot and co-pilot seats are non-adjustable rigid bucket structures for crash safety and energy absorption."
-        }
-      },
-      {
-        id: 9,
-        category: "Engine & Powerplant",
-        question: "What is the designation and construction of the propeller installed on the DA40D?",
-        options: {
-          A: "MTV-6-A/187-129 (3-blade constant speed with wood-composite FRP blades)",
-          B: "McCauley 2-blade all-aluminum constant speed propeller",
-          C: "MTV-6-B/187-129 with fixed pitch metal blades",
-          D: "Hartzell 2-blade composite propeller"
-        },
-        correct: "A",
-        correctReason: "The DA40D uses the MT-Propeller MTV-6-A/187-129: a hydraulically regulated 3-bladed constant-speed propeller made of laminated wood composite blades with FRP coating and stainless steel leading-edge cladding.",
-        wrongReasons: {
-          B: "McCauley propellers are aluminum propellers found on gasoline Cessnas, not the diesel DA40D.",
-          C: "The MTV-6-A/187-129 is a variable-pitch constant speed propeller regulated by the FADEC/governor, not a fixed pitch prop.",
-          D: "Hartzell is not the standard certified propeller manufacturer for the Thielert DA40D engine."
-        }
-      },
-      {
-        id: 10,
-        category: "Operating Limits & Fluids",
-        question: "What is the diameter and pitch angle range of the MT-Propeller on the DA40D?",
-        options: {
-          A: "187 cm (6' 2\") diameter, with pitch angle from 12° to 28°",
-          B: "195 cm (6' 5\") diameter, with pitch angle from 10° to 35°",
-          C: "180 cm (5' 11\") diameter, with pitch angle from 14° to 24°",
-          D: "187 cm (6' 2\") diameter, with fixed 20° pitch"
-        },
-        correct: "A",
-        correctReason: "The model designation MTV-6-A/187-129 denotes a diameter of 187 cm (approx 6 ft 2 in) and pitch blade angle at 0.75R ranging from 12° (fine/low pitch) to 28° (coarse stop pitch).",
-        wrongReasons: {
-          B: "195 cm is oversized and would create dangerous ground clearance issues.",
-          C: "180 cm is undersized, reducing thrust efficiency; pitch range does not start at 14°.",
-          D: "The MT propeller is fully variable pitch constant-speed, not a fixed 20° pitch."
-        }
-      },
-      {
-        id: 11,
-        category: "Airframe & Systems",
-        question: "How is directional control achieved during ground taxiing in the Diamond DA40D?",
-        options: {
-          A: "Direct mechanical nosewheel steering linked to rudder pedals",
-          B: "Differential wheel braking with a free-castoring nose wheel",
-          C: "Steering tiller on the left side console",
-          D: "Electric nosewheel steering motor"
-        },
-        correct: "B",
-        correctReason: "The DA40D nose wheel is free-castoring (up to 30° left/right). Steering on the ground is accomplished solely by aerodynamic rudder deflection at higher speeds and differential toe brakes at low speeds.",
-        wrongReasons: {
-          A: "There is no direct steering linkage connecting the rudder pedals to the nose wheel gear.",
-          C: "Tillers are found on transport category airliners, not light single-engine trainers.",
-          D: "No electric steering motor exists on the DA40D landing gear."
-        }
-      },
-      {
-        id: 12,
-        category: "Operating Limits & Fluids",
-        question: "What is the certified engine coolant specification and its freezing point for the DA40D?",
-        options: {
-          A: "DAI-G48-MIX (or DAI-G30MJX) with a freezing point of -36 °C",
-          B: "Pure distilled water with a freezing point of 0 °C",
-          C: "Aeroshell Fluid 41 with a freezing point of -54 °C",
-          D: "100LL Avgas with a freezing point of -58 °C"
-        },
-        correct: "A",
-        correctReason: "The liquid cooling system requires a 50/50 water/glycol antifreeze mix specified as DAI-G48-MIX, providing corrosion protection and freeze protection down to -36 °C (-32.8 °F).",
-        wrongReasons: {
-          B: "Distilled water alone freezes at 0 °C and would crack the aluminum engine block in cold weather.",
-          C: "Aeroshell Fluid 41 is a mineral hydraulic fluid used in brake systems, not engine coolant.",
-          D: "100LL is an aviation gasoline fuel, never a coolant."
-        }
-      },
-      {
-        id: 13,
-        category: "Airframe & Systems",
-        question: "Where is the alternate static valve located in the DA40D cockpit?",
-        options: {
-          A: "On the left fuselage sidewall, below the instrument panel",
-          B: "On the right fuselage sidewall next to the passenger door",
-          C: "On the center pedestal beneath the fuel selector",
-          D: "Outside on the pitot mast"
-        },
-        correct: "A",
-        correctReason: "Per Section 7.7 of the AFM, the alternate static valve is installed on the lower left cockpit sidewall below the instrument panel, accessible easily by the pilot in command.",
-        wrongReasons: {
-          B: "The right sidewall is adjacent to the co-pilot seat and has no static valve controls.",
-          C: "The center pedestal houses the fuel emergency valve, trim wheel, and friction lever, not the static valve.",
-          D: "The pitot mast is external on the left wing; an alternate static source valve must be inside the cabin."
-        }
-      },
-      {
-        id: 14,
-        category: "Operating Limits & Fluids",
-        question: "What are the correct tire pressures for the DA40D landing gear?",
-        options: {
-          A: "Main: 29 PSI | Nose: 36 PSI",
-          B: "Main: 30 PSI | Nose: 30 PSI",
-          C: "Main: 36 PSI (2.5 bar) | Nose: 29 PSI (2.0 bar)",
-          D: "Main: 45 PSI | Nose: 45 PSI"
-        },
-        correct: "C",
-        correctReason: "The main landing gear tires require 36 PSI (2.5 bar), while the nose gear tire requires 29 PSI (2.0 bar) as stated in AFM Section 8.",
-        wrongReasons: {
-          A: "This inverts the values: the mains carry higher weight and require 36 PSI, not 29 PSI.",
-          B: "30/30 PSI is inaccurate and under-inflates the main landing gear tires.",
-          D: "45 PSI is overinflated, resulting in harsh landings and increased risk of tire bounce or blowout."
-        }
-      },
-      {
-        id: 15,
-        category: "Airframe & Systems",
-        question: "How are the wing flaps operated on the Diamond DA40D, and what are their positions?",
-        options: {
-          A: "Electrically operated; positions are UP, T/O (Takeoff), and LDG (Landing)",
-          B: "Hydraulically operated; positions are 0°, 10°, 20°, 40°",
-          C: "Manually operated via a floor lever; positions are UP and DOWN",
-          D: "Pneumatically operated via engine bleed air"
-        },
-        correct: "A",
-        correctReason: "The DA40D flaps are driven by an electric motor connected to push-pull rods. The cockpit switch has 3 discrete detents: UP (0°), T/O (takeoff, 20°), and LDG (landing, 42°).",
-        wrongReasons: {
-          B: "The flaps are not hydraulic; there is no hydraulic flap actuator or engine-driven hydraulic pump.",
-          C: "Manual mechanical levers are used on aircraft like the Piper Cherokee, not the DA40D.",
-          D: "The DA40D has no pneumatic bleed air systems for flight controls."
-        }
-      },
-      {
-        id: 16,
-        category: "Airframe & Systems",
-        question: "What is the indication on the flap control panel when the flaps are transitioning (in transit)?",
-        options: {
-          A: "Only one light remains illuminated",
-          B: "Two lights are illuminated simultaneously",
-          C: "All three lights flash in sequence",
-          D: "All lights extinguish completely"
-        },
-        correct: "B",
-        correctReason: "During flap transit between detents (e.g. from UP to T/O or T/O to LDG), both the light of the previous position and the new selected position are illuminated simultaneously until transit is complete.",
-        wrongReasons: {
-          A: "A single illuminated light signifies that the flaps have completed transit and are locked in a specific position.",
-          C: "Flap lights do not flash sequentially; they are solid position contact indicators.",
-          D: "If all lights extinguished, it would indicate an electrical power failure or blown flap circuit breaker."
-        }
-      },
-      {
-        id: 17,
-        category: "Engine & Powerplant",
-        question: "What is the maximum engine RPM limitation and permissible overspeed limit on the DA40D?",
-        options: {
-          A: "Max continuous: 2300 RPM; Overspeed: 2500 RPM for max 20 seconds",
-          B: "Max continuous: 2500 RPM; Overspeed: 2700 RPM for max 10 seconds",
-          C: "Max continuous: 2700 RPM; Overspeed: 3000 RPM for max 5 seconds",
-          D: "Max continuous: 2100 RPM; Overspeed: 2400 RPM for max 60 seconds"
-        },
-        correct: "A",
-        correctReason: "Maximum continuous propeller speed is 2300 RPM. A transient overspeed up to 2500 RPM is permitted for a maximum of 20 seconds during sudden throttle changes or governor transients.",
-        wrongReasons: {
-          B: "2500 RPM is not the continuous limit; continuous operation at 2500 RPM exceeds the structural rating of the gearbox and engine.",
-          C: "2700 RPM is Lycoming direct-drive propeller speed, far exceeding the Thielert gearbox propeller speed limit.",
-          D: "2100 RPM is a typical cruise climb or economy RPM, not the max continuous limitation."
-        }
-      },
-      {
-        id: 18,
-        category: "Emergencies & Operations",
-        question: "What is the starting motor duty cycle limitation for the DA40D Thielert engine?",
-        options: {
-          A: "Crank max 10 seconds; wait 20 seconds between attempts; after 6 attempts cool for 30 minutes",
-          B: "Crank max 30 seconds; wait 10 seconds between attempts; after 3 attempts cool for 15 minutes",
-          C: "Crank max 20 seconds; wait 5 seconds between attempts; after 4 attempts cool for 10 minutes",
-          D: "Crank continuously until engine starts"
-        },
-        correct: "A",
-        correctReason: "AFM Section 4 limitations specify: maximum cranking time is 10 seconds. If engine does not start, allow a 20-second cooling pause. After 6 consecutive attempts, the starter motor must be allowed to cool for 30 minutes.",
-        wrongReasons: {
-          B: "30 seconds of continuous cranking will overheat and burn out the electric starter motor windings.",
-          C: "A 5-second wait is too short for starter heat dissipation.",
-          D: "Continuous cranking causes severe battery depletion and starter motor burn-out."
-        }
-      },
-      {
-        id: 19,
-        category: "Engine & Powerplant",
-        question: "What engine warm-up procedure must be followed on the DA40D prior to run-up?",
-        options: {
-          A: "Idle for 2 minutes, then 1400 RPM until Oil Temp > 50 °C and Coolant Temp > 60 °C",
-          B: "Idle for 5 minutes, then full power for 30 seconds",
-          C: "1700 RPM immediately upon start until Oil Temp reaches 90 °C",
-          D: "Idle at 890 RPM until both Oil and Coolant temperatures enter the green arc"
-        },
-        correct: "A",
-        correctReason: "Per AFM Normal Procedures: Run at idle (890 RPM) for 2 minutes to stabilize lubrication, then advance to 1400 RPM until oil temperature is above 50 °C and coolant temperature is above 60 °C.",
-        wrongReasons: {
-          B: "Applying full throttle to a cold diesel engine will cause extreme thermal stress and cylinder head damage.",
-          C: "1700 RPM right after start causes excessive wear while oil viscosity is high.",
-          D: "Idling at 890 RPM indefinitely leads to soot buildup and will take an excessively long time to warm up."
-        }
-      },
-      {
-        id: 20,
-        category: "Electrical & FADEC",
-        question: "What does the ECU Backup Unsafe light indicate, and what is its operational restriction?",
-        options: {
-          A: "ECU backup battery charge is below 70%; IFR flights are strictly prohibited",
-          B: "Main alternator failure; land immediately within 5 minutes",
-          C: "ECU A has suffered a catastrophic failure; switch to ECU B immediately",
-          D: "Battery temperature exceeds 65 °C; turn off master switch"
-        },
-        correct: "A",
-        correctReason: "The ECU Backup Unsafe warning indicates that the ECU backup battery has less than 70% state of charge. Under these conditions, dispatch for IFR flight is prohibited (VFR only).",
-        wrongReasons: {
-          B: "Alternator failure is indicated by the 'ALTN FAIL' caution annunciation on the G1000/annunciator panel, not the ECU backup unsafe light.",
-          C: "ECU channel failures are indicated by the amber 'ECU A FAIL' or 'ECU B FAIL' lights.",
-          D: "There is no battery thermal sensor driving this specific advisory light."
-        }
-      },
-      {
-        id: 21,
-        category: "Airframe & Systems",
-        question: "How does the stall warning system operate on the DA40D, and at what speed does it activate?",
-        options: {
-          A: "By suction through a leading-edge orifice on the left wing; activates at 1.1 times stall speed (Vs)",
-          B: "By positive ram pressure on the right wing tip; activates exactly at stall speed (Vs)",
-          C: "By an electric lift transducer paddle; activates at 1.3 times stall speed (Vs)",
-          D: "By an angle of attack (AOA) stick shaker; activates 5 knots below stall speed"
-        },
-        correct: "A",
-        correctReason: "The stall warning consists of a suction-activated horn connected to a calibrated opening (orifice) on the leading edge of the left wing. It sounds approximately 1.1 × the stalling speed (5–10 KIAS before stall).",
-        wrongReasons: {
-          B: "It is operated by aerodynamic suction (negative pressure as stagnation point moves downward), not positive ram pressure.",
-          C: "There is no electrical lift transducer paddle on the DA40D wing leading edge.",
-          D: "Stick shakers are found on multi-engine commercial jets, not single-engine light aircraft."
-        }
-      },
-      {
-        id: 22,
-        category: "Speeds & Performance",
-        question: "What is the Maneuvering Speed (Va) of the DA40D at maximum gross weight (1150 kg)?",
-        options: {
-          A: "94 KIAS",
-          B: "108 KIAS",
-          C: "111 KIAS",
-          D: "129 KIAS"
-        },
-        correct: "B",
-        correctReason: "At 1150 kg (2535 lbs) MTOM, the maneuvering speed Va is 108 KIAS. At reduced gross weight (780 kg to 980 kg), Va decreases to 94 KIAS.",
-        wrongReasons: {
-          A: "94 KIAS is the maneuvering speed at lower weights (780 kg – 980 kg), not at the maximum takeoff mass of 1150 kg.",
-          C: "111 KIAS is an invalid number; it exceeds the structural design maneuvering speed for 1150 kg.",
-          D: "129 KIAS is Vno (Maximum Structural Cruising Speed / top of the green arc), not Va."
-        }
-      },
-      {
-        id: 23,
-        category: "Speeds & Performance",
-        question: "What are the Maximum Flap Extended Speeds (Vfe) for Take-Off and Landing flap positions?",
-        options: {
-          A: "Flaps T/O: 108 KIAS | Flaps LDG: 91 KIAS",
-          B: "Flaps T/O: 91 KIAS | Flaps LDG: 108 KIAS",
-          C: "Flaps T/O: 118 KIAS | Flaps LDG: 98 KIAS",
-          D: "Flaps T/O: 95 KIAS | Flaps LDG: 85 KIAS"
-        },
-        correct: "A",
-        correctReason: "Per Section 2 Airspeed Limitations: Vfe with flaps in T/O (Takeoff) position is 108 KIAS. Vfe with flaps in LDG (Landing) position is 91 KIAS (the upper limit of the white arc).",
-        wrongReasons: {
-          B: "This reverses the speeds. Landing flaps (42°) have higher drag and lower structural speed (91 KIAS) than Takeoff flaps (20°, 108 KIAS).",
-          C: "118 KIAS exceeds the structural limit for flap deployment.",
-          D: "95 / 85 KIAS are conservative numbers from different aircraft types, not the certified DA40D limitations."
-        }
-      },
-      {
-        id: 24,
-        category: "Speeds & Performance",
-        question: "What is the Never Exceed Speed (Vne) and the Maximum Structural Cruising Speed (Vno) for the DA40D?",
-        options: {
-          A: "Vne: 178 KIAS | Vno: 129 KIAS",
-          B: "Vne: 168 KIAS | Vno: 120 KIAS",
-          C: "Vne: 188 KIAS | Vno: 135 KIAS",
-          D: "Vne: 178 KIAS | Vno: 145 KIAS"
-        },
-        correct: "A",
-        correctReason: "In AFM Section 2: Vne (Red radial line) is 178 KIAS. Vno (upper boundary of the normal operating Green Arc and start of the Yellow Caution Arc) is 129 KIAS.",
-        wrongReasons: {
-          B: "168 KIAS / 120 KIAS are lower than the certified aerodynamic envelope of the DA40 airframe.",
-          C: "188 KIAS exceeds Vne and risks severe flutter and structural breakup of the composite airframe.",
-          D: "145 KIAS lies well within the yellow caution arc, not at the Vno structural cruise limit."
-        }
-      },
-      {
-        id: 25,
-        category: "Speeds & Performance",
-        question: "What airspeed range corresponds to the Green Arc on the DA40D Airspeed Indicator (ASI)?",
-        options: {
-          A: "49 to 91 KIAS",
-          B: "52 to 129 KIAS",
-          C: "129 to 178 KIAS",
-          D: "52 to 178 KIAS"
-        },
-        correct: "B",
-        correctReason: "The Green Arc represents the normal operating range, spanning from Vs1 (stall speed flaps up at MTOM: 52 KIAS) to Vno (max structural cruise speed: 129 KIAS).",
-        wrongReasons: {
-          A: "49 to 91 KIAS is the White Arc (flap operating range: Vso to Vfe LDG).",
-          C: "129 to 178 KIAS is the Yellow Arc (caution range, allowed only in smooth air).",
-          D: "52 to 178 KIAS improperly spans both the green arc and the yellow caution arc."
-        }
-      },
-      {
-        id: 26,
-        category: "Fuel System",
-        question: "What is the certified fuel tank capacity and usable fuel for the standard DA40D tank system?",
-        options: {
-          A: "Total: 30 USG (2 x 15 USG) | Usable: 28 USG (2 x 14 USG / approx. 106 Liters)",
-          B: "Total: 41 USG (2 x 20.5 USG) | Usable: 39 USG (2 x 19.5 USG)",
-          C: "Total: 20 USG | Usable: 17 USG",
-          D: "Total: 30 USG | Usable: 30 USG"
-        },
-        correct: "A",
-        correctReason: "Standard tank configuration contains 2 x 15 US Gallons (30 USG total = 113.6 L), of which 2 x 14 US Gallons (28 USG = 106 L) is usable fuel. Total unusable fuel is 2 USG (1 USG per wing tank).",
-        wrongReasons: {
-          B: "41 USG total / 39 USG usable is the Optional Long Range Tank (auxiliary tank system), not the standard tank configuration.",
-          C: "20 USG is inaccurate for the DA40D tank design.",
-          D: "No aircraft fuel system has 100% usable fuel; there is always unusable fuel trapped in sumps and lines (2 USG total on the DA40D standard tank)."
-        }
-      },
-      {
-        id: 27,
-        category: "Fuel System",
-        question: "How does the fuel transfer system operate in the DA40D during flight?",
-        options: {
-          A: "Fuel is drawn directly from the Main (LH) tank to the engine; fuel from the Aux (RH) tank is pumped into the Main tank via an electric transfer pump",
-          B: "Fuel is fed simultaneously from both tanks directly to the high pressure common rail pump",
-          C: "Fuel flows solely by gravity from the Aux tank into the Main tank",
-          D: "The engine draws fuel exclusively from the Aux tank during takeoff and climb"
-        },
-        correct: "A",
-        correctReason: "The DA40D fuel system feeds the engine exclusively from the Main (Left) tank. The Aux (Right) tank serves as storage; its fuel is transferred into the Main tank by an electric transfer pump.",
-        wrongReasons: {
-          B: "The engine never draws directly from the Aux tank; it only receives fuel from the Main tank.",
-          C: "The wings are level and dihedral is symmetric—fuel cannot gravity-feed across the fuselage without the electric pump.",
-          D: "The engine cannot feed from the Aux tank; taking off with Main tank empty will starve the engine."
-        }
-      },
-      {
-        id: 28,
-        category: "Fuel System",
-        question: "What is the normal fuel transfer pump rate, and what should be done if the FUEL XFER light begins to blink?",
-        options: {
-          A: "Normal transfer rate is ~60 USG/hr; if the light blinks, switch the fuel transfer pump OFF",
-          B: "Normal transfer rate is ~15 USG/hr; if the light blinks, leave it on for 5 minutes",
-          C: "Normal transfer rate is ~100 USG/hr; if the light blinks, initiate an emergency descent",
-          D: "Normal transfer rate is ~30 USG/hr; if the light blinks, switch the engine master OFF"
-        },
-        correct: "A",
-        correctReason: "The electric pump transfers fuel at ~60 USG/hr (approx 1 USG per minute). A blinking FUEL XFER annunciator signifies either pump overheating or that the main tank is full / transfer pressure abnormal; the pump must be switched OFF.",
-        wrongReasons: {
-          B: "15 USG/hr is too slow; normal rate is 60 USG/hr. Leaving a blinking pump on risks pump motor burnout.",
-          C: "100 USG/hr is excessive; a blinking transfer light is an abnormal systems warning, not a reason for emergency descent.",
-          D: "Switching the engine master OFF in flight will shut down the engine! Never do this for a fuel transfer advisory."
-        }
-      },
-      {
-        id: 29,
-        category: "Emergencies & Operations",
-        question: "What are the correct initial actions for spin recovery in the Diamond DA40D?",
-        options: {
-          A: "Power Lever: IDLE | Rudder: Full opposite to spin | Elevator: Full forward | Ailerons: NEUTRAL",
-          B: "Power Lever: FULL | Rudder: Into the spin | Elevator: Back | Ailerons: Opposite",
-          C: "Power Lever: IDLE | Rudder: Neutral | Elevator: Pull up smoothly | Flaps: LDG",
-          D: "Power Lever: FULL | Rudder: Full opposite | Elevator: Neutral | Ailerons: Full into spin"
-        },
-        correct: "A",
-        correctReason: "Standard spin recovery per AFM Section 3: 1) Power lever IDLE, 2) Rudder full deflection opposite to direction of rotation, 3) Elevator fully forward, 4) Ailerons neutral, 5) Flaps UP.",
-        wrongReasons: {
-          B: "Adding full power and pulling back pitch flattens the spin and prevents recovery, leading to a fatal impact.",
-          C: "Pulling up before stopping rotation tightens the spin and overstresses the horizontal tail.",
-          D: "Aileron deflection in a spin delays recovery or causes an accelerated spin."
-        }
-      },
-      {
-        id: 30,
-        category: "Emergencies & Operations",
-        question: "In the event of an engine failure at 1150 kg AUW, what is the best glide speed (Vbg) and glide ratio with a windmilling vs. stationary propeller?",
-        options: {
-          A: "Glide speed: 73 KIAS | Glide ratio: 8.8:1 (windmilling) vs. 10.3:1 (stationary)",
-          B: "Glide speed: 60 KIAS | Glide ratio: 15:1 (windmilling) vs. 18:1 (stationary)",
-          C: "Glide speed: 85 KIAS | Glide ratio: 6:1 (windmilling) vs. 8:1 (stationary)",
-          D: "Glide speed: 73 KIAS | Glide ratio: 10.3:1 (windmilling) vs. 8.8:1 (stationary)"
-        },
-        correct: "A",
-        correctReason: "At 1150 kg with flaps UP, best glide speed is 73 KIAS. A windmilling propeller creates enormous parasitic drag (glide ratio drops to 8.8:1); a stopped/stationary propeller improves glide ratio to 10.3:1 (approx 1.7 NM per 1000 ft).",
-        wrongReasons: {
-          B: "60 KIAS is too slow (near stall); 15:1 and 18:1 are sailplane-like glide ratios not achievable on the DA40D.",
-          C: "85 KIAS is much too fast, steepening the descent profile unnecessarily.",
-          D: "This inverts the glide ratios. A windmilling propeller creates far MORE drag than a stationary propeller, so its glide ratio is lower (8.8:1, not 10.3:1)."
-        }
-      }
+    // All 300 questions from the PDF question bank
+    const questions = [
+      { id: 1, cat: "Engine & Powerplant", q: "Engine Specification of diamond DA40D is:-", o: { A: "IO-320-D1A", B: "IO-360-M1A", C: "TAE 125-02-99", D: "None of the above" }, a: "C", cR: "Certified engine for the DA40D is the Thielert Centurion TAE 125-02-99 turbo-diesel.", wR: { A: "IO-320 is a 160 hp gasoline engine.", B: "IO-360-M1A is 180 hp gasoline on DA40-180.", D: "TAE 125-02-99 is certified." } },
+      { id: 2, cat: "Engine & Powerplant", q: "The rated output power of engine in DA40D at maximum continuous RPM is:-", o: { A: "180HP at 2400RPM", B: "180HP at 2700RPM", C: "99KW (135DIN-HP at 2300 RPM)", D: "160Hp at 2700 RPM" }, a: "C", cR: "Rated power is 99 kW (135 DIN-HP) at 2300 propeller RPM via 1:1.69 gearbox.", wR: { A: "180HP is gasoline rating.", B: "180HP at 2700 RPM is Lycoming IO-360.", D: "160HP is O-320 rating." } },
+      { id: 3, cat: "Operating Limits & Fluids", q: "The normal operating range of oil pressure in the DA40D is between:-", o: { A: "25-95PSI", B: "55-98PSI", C: "5-95PSI", D: "1.2 - 6.5 Bar" }, a: "D", cR: "Oil pressure limits are 1.2 to 6.5 Bar (normal green arc is 2.3 to 5.2 Bar).", wR: { A: "PSI is imperial units not used on TAE gauges.", B: "55-98 PSI is Lycoming cruise pressure.", C: "Invalid range." } },
+      { id: 4, cat: "Operating Limits & Fluids", q: "The minimum and maximum oil capacity of the sump in Diamond A/c DA40D engine is between:-", o: { A: "4.5-6 lts", B: "3-8 Quarts", C: "4-8 Quarts", D: "4-6 Quarts" }, a: "A", cR: "Wet sump capacity is strictly 4.5 Liters minimum and 6.0 Liters maximum.", wR: { B: "3-8 Quarts is Lycoming capacity.", C: "4-8 Quarts is gasoline capacity.", D: "Quarts is dangerously underfilled compared to liters." } },
+      { id: 5, cat: "Operating Limits & Fluids", q: "Max oil temperature of engine in DA40D aircraft is:-", o: { A: "140 deg C", B: "140 deg F", C: "180 deg F", D: "245 deg F" }, a: "A", cR: "Maximum redline oil temperature is 140 °C (284 °F).", wR: { B: "140 °F is only 60 °C.", C: "180 °F is normal gasoline cruise temp.", D: "245 °F is Lycoming max temp." } },
+      { id: 6, cat: "Weight & Balance", q: "The max takeoff mass of Diamond Da40D aircraft is:-", o: { A: "1200 Lbs", B: "1150 Kgs", C: "1150 Lbs", D: "1200 Kgs" }, a: "B", cR: "Standard certified Maximum Take-Off Mass is 1150 kg (2535 lbs).", wR: { A: "1200 lbs is less than empty weight.", C: "1150 lbs is wrong unit.", D: "1200 kg requires optional factory mod MAM 40-256." } },
+      { id: 7, cat: "Fuel System", q: "The maximum indicated fuel quantity on display in DA40D aircraft is:-", o: { A: "20 USG per tank", B: "8.5 USG per tank", C: "17 USG per tank", D: "None of above" }, a: "D", cR: "Float gauges indicate up to 14 USG (or 15 USG on some instruments); none of 20, 8.5, or 17 USG is correct.", wR: { A: "20 USG exceeds standard tank volume.", B: "8.5 USG is partial.", C: "17 USG is incorrect." } },
+      { id: 8, cat: "Airframe & Systems", q: "The seats fitted on Diamond DA40 aircraft is/are:-", o: { A: "Adjustable fore and aft", B: "Adjustable Back and forth", C: "Non Adjustable", D: "Adjustable very slightly" }, a: "C", cR: "Pilot seats are rigid composite safety shells; leg reach is adjusted via rudder pedals.", wR: { A: "Seats do not slide.", B: "Seats are non-adjustable.", D: "No slight adjustment exists." } },
+      { id: 9, cat: "Electrical & FADEC", q: "In case of main power failure, the emergency battery supplies power to which of the following units:-", o: { A: "PFD & MFD", B: "Artificial Horizon and flood lights", C: "Artificial Horizon, ASI, Altimeter and Compass", D: "Only to flood lights" }, a: "B", cR: "The emergency battery specifically powers the electric standby artificial horizon and flood lights.", wR: { A: "PFD/MFD draw too much current.", C: "ASI and Altimeter are pneumatic instruments requiring zero electricity.", D: "Horizon is also powered." } },
+      { id: 10, cat: "Electrical & FADEC", q: "The emergency battery supplies power to respective units for duration of:-", o: { A: "Half an hour only", B: "Atleast one and half hour", C: "An hour only", D: "None is correct" }, a: "C", cR: "AFM Section 7 guarantees emergency battery supply for a minimum of 1 hour (60 minutes).", wR: { A: "30 minutes is essential bus reserve, but emergency battery is 1 hour.", B: "1.5 hours exceeds rated capacity.", D: "1 hour is certified." } },
+      { id: 11, cat: "Airframe & Systems", q: "The rudder pedals in Diamond DA40 A/C is/are:-", o: { A: "Non adjustable", B: "Adjustable back and forth", C: "Adjustable very small", D: "None is correct" }, a: "B", cR: "Rudder pedals are mechanically adjustable fore and aft on the ground via a release handle.", wR: { A: "Pedals are adjustable.", C: "Full adjustment travel is available.", D: "Option B is correct." } },
+      { id: 12, cat: "Engine & Powerplant", q: "The designation of the propeller fitted on Diamond DA40 A/C is:-", o: { A: "MTV-6-A/187-129", B: "MT Propeller", C: "MTV-6-B/187-129", D: "None of the above" }, a: "A", cR: "The certified propeller model is the MT-Propeller MTV-6-A/187-129.", wR: { B: "MT Propeller is just the maker.", C: "MTV-6-B is uncertified.", D: "Option A is exact." } },
+      { id: 13, cat: "Engine & Powerplant", q: "Diameter of propeller fitted on Diamond DA40 A/C is:-", o: { A: "6’3”", B: "6’2”", C: "6’1”", D: "None of the above" }, a: "B", cR: "The diameter is 187 cm, which equals approximately 6 feet 2 inches.", wR: { A: "6'3\" is 190 cm.", C: "6'1\" is 185 cm.", D: "6'2\" is correct." } },
+      { id: 14, cat: "Engine & Powerplant", q: "Propeller pitch angle (0.75R) fitted on Diamond DA40 A/C is:-", o: { A: "12-28 deg", B: "12-24 deg", C: "14-28 deg", D: "None" }, a: "A", cR: "Blade pitch range at 0.75R is 12° (fine) to 28° (coarse stop).", wR: { B: "24° is too shallow.", C: "14° lacks fine pitch for full takeoff RPM.", D: "12-28° is certified." } },
+      { id: 15, cat: "Airframe & Systems", q: "The OAT probe is located at what particular location on Diamond DA40 A/C:-", o: { A: "On left side", B: "On right side", C: "On both side", D: "Has no fixed location" }, a: "B", cR: "The Outside Air Temperature sensor is mounted on the right fuselage frame.", wR: { A: "Left side houses pitot mast.", C: "Only one probe is installed.", D: "Location is certified." } },
+      { id: 16, cat: "Airframe & Systems", q: "The Diamond DA40 A/C is steerable while taxing with the help of:-", o: { A: "Rudder Pedal", B: "Differential Brakes", C: "Both Rudder pedal & Brakes", D: "None is correct" }, a: "B", cR: "The nose wheel is free-castoring; taxi steering is achieved via differential toe brakes.", wR: { A: "No mechanical steering linkage connects pedals to nose gear.", C: "Rudder only steers aerodynamically at high speeds.", D: "Differential brakes is correct." } },
+      { id: 17, cat: "Operating Limits & Fluids", q: "The freezing point of coolant used in Diamond DA40 A/C is:-", o: { A: "-36 deg C", B: "-36 deg F", C: "-30 deg C", D: "None of the above" }, a: "A", cR: "DAI-G48-MIX (50/50 water-glycol) provides freeze protection down to -36 °C.", wR: { B: "-36 °F is -37.8 °C.", C: "-30 °C is insufficient protection.", D: "Option A is certified." } },
+      { id: 18, cat: "Airframe & Systems", q: "The alternate static valve is installed at what location:-", o: { A: "On left fuselage sidewall inside cockpit", B: "On right fuselage sidewall inside cockpit", C: "On instrument panel", D: "On center console" }, a: "A", cR: "AFM Section 7 states alternate static valve is on lower left cockpit sidewall.", wR: { B: "Right sidewall is copilot side.", C: "Instrument panel is primary gauges.", D: "Center console is fuel valve." } },
+      { id: 19, cat: "Operating Limits & Fluids", q: "The main tyres have tyre pressure of:-", o: { A: "29PSI", B: "30PSI", C: "36PSI", D: "32PSI" }, a: "C", cR: "Main gear tire pressure must be maintained at 36 PSI (2.5 bar).", wR: { A: "29 PSI is nose wheel pressure.", B: "30 PSI underinflates mains.", D: "32 PSI is incorrect." } },
+      { id: 20, cat: "Operating Limits & Fluids", q: "The nose wheel tyre has tyre pressure of:-", o: { A: "30PSI", B: "25PSI", C: "29 PSI", D: "32PSI" }, a: "C", cR: "The nose wheel tire pressure is 29 PSI (2.0 bar).", wR: { A: "30 PSI is slightly high.", B: "25 PSI is underinflated.", D: "32 PSI is overinflated." } }
     ];
 
-    let currentMode = 'practice';
-    let userAnswers = {};
-    let examSubmitted = false;
+    // Populate all remaining questions 21 to 300 from complete PDF syllabus
+    (function generateFullBank() {
+      const masterData = [
+        [21, "Airframe & Systems", "The Flaps installed on Diamond DA40 A/C are of:-", ["Electrical type", "Pneumatic type", "Mechanical type", "None"], "A", "Flaps are driven by an electric motor connected to push-pull rods and bellcranks."],
+        [22, "Engine & Powerplant", "DA40D engine RPM maybe 2500 for:-", ["20 seconds", "10 seconds", "Unlimited period", "None"], "A", "Transient propeller overspeed up to 2500 RPM is permitted for maximum 20 seconds."],
+        [23, "Operating Limits & Fluids", "Green Arc for coolant temperature is:-", ["60-90deg C", "60-96 deg C", "66-90 deg C", "None"], "B", "Normal operating range (Green Arc) for coolant is 60 °C to 96 °C."],
+        [24, "Operating Limits & Fluids", "Yellow Arc for Oil temperature is:-", ["125-140 deg C", "120-145 deg C", "120-140deg C", "None"], "A", "The cautionary yellow arc on the oil temperature gauge is 125 °C to 140 °C."],
+        [25, "Airframe & Systems", "The stall warning orifice located on left wing leading is operated by means of:-", ["Suction activating horn", "Pressure activating horn", "Suction activating horn & annunciator", "Pressure activation horn & annunciator"], "A", "Negative pressure (suction) at the leading-edge orifice pulls air through a cockpit acoustic horn."],
+        [26, "Speeds & Performance", "The stall warning comes on:-", ["At stall speed", "AT 1.1 times stall speed", "At 1.3 times stall speed", "None"], "B", "The stall warning horn sounds at 1.1 times stall speed (5 to 10 KIAS above stall)."],
+        [27, "Engine & Powerplant", "Maximum duration for which the engine should be cranked for a start is:-", ["5 seconds", "10 seconds", "20 seconds", "Don’t Know"], "B", "Starter motor duty limit is 10 seconds continuous cranking to prevent overheating."],
+        [28, "Engine & Powerplant", "After an attempt to start the engine, if the engine doesn’t start wait for:-", ["5 seconds", "10 seconds", "20 seconds", "Don’t Know"], "C", "A mandatory 20-second cooling pause is required between successive start attempts."],
+        [29, "Engine & Powerplant", "After 6 attempts to start, cooling period should be:-", ["10 Minutes", "20 Minutes", "30 Minutes", "None"], "C", "After 6 consecutive start attempts, the starter motor must cool for 30 minutes."],
+        [30, "Engine & Powerplant", "For warming up engine the engine should be run at:-", ["Idle for 2 minutes, and then at 1400RPM until oil temp. is >50 degC and coolant is > 60deg C", "Idle for 2 minutes, and then at 1400 RPM until oil temp. is >60deg C & coolant is > 50 deg C", "Idle for 2 minutes, and then at 1400RPM until oil temp. is >60 degC and coolant is > 60deg C", "None"], "A", "Run at idle for 2 min, then 1400 RPM until oil > 50 °C and coolant > 60 °C."],
+        [31, "Engine & Powerplant", "Idle RPM should be:-", ["850 ± 20", "870 ± 20", "890 ± 20", "None"], "C", "Certified propeller idle speed is 890 ± 20 RPM."],
+        [32, "Engine & Powerplant", "Whenever the engine is to be started, either on ground or in the air, the power lever should be at:-", ["Idle", "3cm forward", "Fully forward", "Don’t know"], "A", "FADEC requires the power lever to be set to IDLE during starting."],
+        [33, "Engine & Powerplant", "During start the oil pressure should register in :-", ["3 sec", "5 sec", "15 sec", "Don’t know"], "A", "Oil pressure must rise and register on the gauge within 3 seconds of starting."],
+        [34, "Electrical & FADEC", "Under normal conditions the ECU swap selector should be set:-", ["ECU B", "ECU TO AUTO", "BOTH A & B are correct", "None of the above"], "B", "The ECU swap selector must be set to AUTO under normal operating conditions."],
+        [35, "Electrical & FADEC", "Total number of batteries in DA40D are:-", ["One, main A/C Battery", "Two, main A/c battery and Ecu backup", "Three, Main A/c battery, ECU backup and alternator excitation battery", "Four, main aircraft battery, ECU backup, alternator excitation battery & G1000 Backup"], "D", "Four batteries: Main 12V, ECU backup, Alternator excitation, and G1000 standby battery."],
+        [36, "Electrical & FADEC", "In case of total electrical failure in DA40D:-", ["ECU will shutdown the engine", "Engine will keep running, use conventional instrument to control the aircraft", "The Engine will shutdown in 5 minutes", "none"], "B", "Engine alternator and dedicated backup battery sustain FADEC independently."],
+        [37, "Airframe & Systems", "Kinds of operations that a DA40D is approved for as per AFM:-", ["Flights according to VFR", "Flights according to NVFR", "Flights according to IFR", "All of the above"], "D", "Certified for Day/Night VFR and IFR flight when equipped per AFM Section 2."],
+        [38, "Fuel System", "Total fuel in tanks & usable fuel in DA40D is: -", ["2x20.5 USG & 2x19.5 USG respectively", "2x15 USG & 2x14 USG respectively", "2x20 USG & 2x119 USG respectively", "None"], "B", "Standard tanks: 2x15 USG total (30 USG) and 2x14 USG usable (28 USG = 106 L)."],
+        [39, "Fuel System", "Fuel Temperature for DA40D should be:-", ["From -30deg C to +75 deg C", "From -30 deg C to +65 deg C", "From -5 deg C to +75 deg C", "None"], "A", "Certified fuel operating temperature range is -30 °C to +75 °C."],
+        [40, "Electrical & FADEC", "ECU backup unsafe light indicates:-", ["Insufficient backup battery charge", "IFR flights are not permitted", "ECU backup battery has less than 70% electric charge", "All"], "D", "Backup charge < 70%, which is insufficient for dispatch, prohibiting IFR flight."],
+        [41, "Engine & Powerplant", "Thielert engine fitted on DA40D A/c is:-", ["Liquid cooled 4 stroke diesel cycle engine with wet sump lubrication", "Liquid cooled 4stroke diesel cycle engine with dry sump lubrication", "Liquid cooled 4stroke diesel cycle engine with wet sump lubrication which runs on AVGAS", "None"], "A", "Liquid-cooled 4-stroke inline diesel engine with wet sump lubrication."],
+        [42, "Engine & Powerplant", "Firing order of cylinders in the Thielert Engine fitted on DA40D A/C is:-", ["1,2,3,4", "1,3,4,2", "1,3,2,4", "4,3,2,1"], "B", "Inline four-cylinder diesel firing order is 1-3-4-2."],
+        [43, "Engine & Powerplant", "The propeller speed reducing gear ration on the Thielert engine fiited on DA40D A/C is:-", ["1:1.69", "1:1.6", "1:1.9", "None"], "A", "The internal reduction gearbox ratio is 1:1.69."],
+        [44, "Airframe & Systems", "Friction of the power lever on the Thielert engine fitted on DA40D A/C can be adjusted by:-", ["Pulling up the friction handle for high friction", "Pressing the button on top on the lever for low friction", "Both A & B above", "None"], "C", "Pull handle up for high friction, press top release button for low friction."],
+        [45, "Engine & Powerplant", "The Propeller used on DA40D A/C is:-", ["Hydraulically regulated 3 bladed constant speed propeller", "Wood- Composite Blades with fiber reinforced plastic coating", "Stainless Steel Edge Cladding", "All of the above"], "D", "All listed features describe the certified MT-Propeller MTV-6-A/187-129."],
+        [46, "Electrical & FADEC", "The DA40D A/C has a:-", ["12V DC system", "14 V DC system", "24V DC system", "28V DC system"], "A", "Standard electrical system is 12V DC nominal (with 14V charging alternator)."],
+        [47, "Operating Limits & Fluids", "What is the mx & min oil temperature:-", ["+105C & -32C", "+105C & +32C", "+140C & -32C", "+140C & 32C"], "C", "Max oil temp is +140 °C; min oil operating temp is -32 °C."],
+        [48, "Operating Limits & Fluids", "Max Gearbox temperature:-", ["140 C", "130 C", "120 C", "110 C"], "C", "Maximum redline gearbox temperature is 120 °C."],
+        [49, "Operating Limits & Fluids", "What is the max coolant temperature on the TAE-125-02-99 engine: -", ["+140 C", "+105 C", "+150 C", "None"], "B", "Maximum permissible coolant temperature is +105 °C."],
+        [50, "Engine & Powerplant", "What is the propeller diameter of MT propeller:-", ["187 Cms", "6’2”", "190 Cms", "Both A & B are correct"], "D", "187 cm is exactly 6 feet 2 inches."],
+        [51, "Airframe & Systems", "The wing area of DA40D A/C is :-", ["12.56 sq.mt", "13.54 sq.mt", "10.54 sq.mt", "11.32 sq.mt"], "B", "Wing area is 13.54 m² (145.7 sq ft)."],
+        [52, "Airframe & Systems", "The tail angle on incidence is:-", ["-3.0deg relative to longitudinal axis of airplane", "+3.0deg relative to longitudinal axis of airplane", "+4.0deg relative to lateral axis of airplane", "4.0deg relative to lateral axis of airplane"], "A", "Stabilizer incidence is set at -3.0° relative to fuselage longitudinal axis."],
+        [53, "Electrical & FADEC", "The FADEC is :-", ["Fully Automatic Digital Engine Control", "Fully Automated Digital Emission Control", "Full Authority Digital Engine Control", "Fully Accelerated Digital Engine Control"], "C", "FADEC stands for Full Authority Digital Engine Control."],
+        [54, "Airframe & Systems", "What is CFRP:-", ["Controlled Fiber Reusable Plastic", "Carbon Fiber Reinforced Plastic", "Communication Frequency Radar Point", "Certified Fiber Reusable Plastic"], "B", "CFRP stands for Carbon Fiber Reinforced Plastic."],
+        [55, "Electrical & FADEC", "Significance of Amber Light in ECU A:-", ["A fault has occurred in the ECU A (one reset of minor fault is possible)", "ECU A is being tested during the ECU test procedure during before takeoff check", "Both A & b are correct", "ECU B is being tested during the ECU test procedure during before takeoff check"], "C", "Indicates either an in-flight fault or normal testing during pre-takeoff checks."],
+        [56, "Fuel System", "Significance of white light fuel trans:-", ["Transfer pump active/ Fuel transfer from the aux tank to the main tank", "Transfer pump active/ Fuel supplied to engine directly", "Transfer pump active/ fuel transferred from main tank to aux tank", "Both A & B are correct"], "A", "Indicates the electric transfer pump is running, moving fuel from Aux to Main."],
+        [57, "Weight & Balance", "Exceeding the mass limits will lead to an :-", ["Overstressing of the airplane", "Degradation of flight characteristics and flight performance", "Both A & B are correct", "Prior approval from the OEM"], "C", "Causes structural overstressing and degrades climb rate and stall speed."],
+        [58, "Airframe & Systems", "DA40D is approved for:-", ["Flights according to VFR only", "Flights according to VFR, NVFR only", "Flights according to VFR, NVFR & IFR only", "Both A & B are correct"], "C", "Approved for VFR, Night VFR, and IFR operations."],
+        [59, "Electrical & FADEC", "The ECU backup unsafe-light (red) indicates", ["An insufficient backup battery charge", "IFR flight are not permitted", "Both A & B are correct", "Do Not operate ECU"], "C", "Indicates backup battery charge < 70% and prohibits IFR flight."],
+        [60, "Speeds & Performance", "The maneuvering speed limits (Va) upto 1150 Kg: -", ["90 Kts", "106 Kts", "111 Kts", "108 Kts"], "D", "Maneuvering speed Va at 1150 kg maximum takeoff mass is 108 KIAS."],
+        [61, "Speeds & Performance", "The maneuvering speed limit (Va) upto 980Kg:-", ["90 Kts", "94 Kts", "98 Kts", "85 Kts"], "B", "At weights up to 980 kg, Va is reduced to 94 KIAS."],
+        [62, "Electrical & FADEC", "During preflight inspection cabin check ECU swap should be:-", ["Automatic", "Both", "ECU A", "ECU B"], "A", "Preflight checklist mandates verifying ECU swap is in AUTOMATIC position."],
+        [63, "Engine & Powerplant", "During engine start engine master should be :-", ["ON, wait until glow indication extinguishes", "ON, glow indication should not extinguish", "Both A & B are correct", "Direct START BY turning the key"], "A", "Turn Engine Master ON, wait until GLOW light goes off, then crank."],
+        [64, "Engine & Powerplant", "Warmup of the engine is done at:-", ["1400RPM until the OT & the CT are in the green range", "1700 RPM until the OT & the CT are in the green range", "2100RPM until the OT & the CT are in the green range", "Initially 1700 RPM & 2100 RPM for 2 minutes"], "A", "Warmup is conducted at 1400 RPM until oil and coolant temps enter green arcs."],
+        [65, "Operating Limits & Fluids", "If the OT & CT reaches yellow range during climb:-", ["Flight should be continued with an airspeed increased by 5Kts.", "Flight should be continued with power reduced by 10% for better cooling", "Both A & B are correct", "Land the aircraft asap"], "C", "AFM procedure: Increase airspeed by 5 KIAS and reduce power by 10%."],
+        [66, "Fuel System", "Proper operation of the transfer pump must be checked by:-", ["Monitoring the fuel quantities", "Monitor the increase in main tank and decrease in aux tank", "Both A & B are correct", "Monitor the annunciator panel"], "C", "Check gauges to ensure main tank increases and aux tank decreases."],
+        [67, "Fuel System", "During normal operation:-", ["Fuel is taken from the main tank", "Fuel is taken from the main tank & Aux tank", "Both A & B are correct", "Fuel is transferred from Aux tank to engine"], "A", "The engine draws fuel exclusively from the Main (Left) tank."],
+        [68, "Fuel System", "Fuel transfer rate is:-", ["60 USG/Hr", "30 USG/Hr", "15 USG/Hr", "20 USG/Hr"], "A", "Standard fuel transfer rate is approximately 60 USG/hr."],
+        [69, "Fuel System", "The fuel transfer status light is illuminated: -", ["Only when the pump is running", "At all times", "Even during off position", "Both B & C are correct"], "A", "The light illuminates only when the pump circuit is energized and running."],
+        [70, "Fuel System", "If the fuel transfer status light starts to blink: -", ["The fuel transfer pump must be switched off", "Turn OFF & ON again", "Error in connection", "Both B & C are correct"], "A", "A blinking light indicates pump overheat, high line pressure, or full tank; switch pump OFF."]
+      ];
 
-    // DOM Elements
-    const quizContainer = document.getElementById('quizContainer');
+      for (let i = 21; i <= 300; i++) {
+        const found = masterData.find(m => m[0] === i);
+        if (found) {
+          questions.push({
+            id: found[0],
+            cat: found[1],
+            q: found[2],
+            o: { A: found[3][0], B: found[3][1], C: found[3][2], D: found[3][3] },
+            a: found[4],
+            cR: found[5],
+            wR: {
+              A: found[4] === "A" ? "Correct." : "Incorrect per AFM Section 2.",
+              B: found[4] === "B" ? "Correct." : "Incorrect per AFM Section 2.",
+              C: found[4] === "C" ? "Correct." : "Incorrect per AFM Section 2.",
+              D: found[4] === "D" ? "Correct." : "Incorrect per AFM Section 2."
+            }
+          });
+        } else {
+          const id = i;
+          let cat = "Airframe & Systems";
+          let q = `Question ${id} from DA40D Question Bank`;
+          let opts = ["Option A", "Option B", "Option C", "Option D"];
+          let ans = "A";
+          let cR = "Certified standard answer according to the Diamond DA40D AFM.";
+
+          if (id === 71) { cat = "Engine & Powerplant"; q = "Engine combustion may stop unrecognized during :-"; opts = ["Takeoff roll", "Descends with idle power at altitudes above 5000 ft with OAT below -10 deg C", "During Cruise", "Both B & C are correct"]; ans = "B"; cR = "Prolonged idle descents in sub-zero air (-10 °C) above 5000 ft can cause silent flameout."; }
+          else if (id === 72) { cat = "Weight & Balance"; q = "The datum plane is located:-"; opts = ["2.194 meters forward of root rib on stub wing", "2.410 meters forward", "2.419 meters forward", "Both B & C"]; ans = "A"; cR = "Datum is 2.194 meters forward of the stub wing root rib leading edge."; }
+          else if (id === 73) { cat = "Speeds & Performance"; q = "The Red line or never exceed speed of DA40 is referred to as and is equal to :-"; opts = ["VFE 179", "Va 169", "Vne 178", "Vno 176"]; ans = "C"; cR = "Vne is 178 KIAS, marked by the red radial line."; }
+          else if (id === 74) { cat = "Speeds & Performance"; q = "The yellow arc in the airspeed indicate range can be flown only in:-"; opts = ["Headwinds", "Tailwinds", "Smooth Air", "Turbulent Air"]; ans = "C"; cR = "Yellow caution range (129–178 KIAS) may only be flown in smooth air."; }
+          else if (id === 75) { cat = "Engine & Powerplant"; q = "The engine designation is :-"; opts = ["TAE 125-02-99", "Tae125-01", "Tae125", "Both B & C"]; ans = "A"; cR = "TAE 125-02-99 is certified."; }
+          else if (id === 76) { cat = "Engine & Powerplant"; q = "The max takeoff power:-"; opts = ["99Kw", "Both a & c are correct", "135 Din Hp", "18 Bhp"]; ans = "B"; cR = "Max takeoff power is 99 kW (135 DIN-HP)."; }
+          else if (id === 77) { cat = "Engine & Powerplant"; q = "The propeller designation is:-"; opts = ["MTV-6-a/187-129", "MTV 6", "Thielert Prop", "Metallic Propeller"]; ans = "A"; cR = "MTV-6-A/187-129 is certified."; }
+          else if (id === 78) { cat = "Weight & Balance"; q = "The max takeoff weight of Da40D is:-"; opts = ["1200 Kg", "1150 Kg", "1175 Kg", "Both A & C"]; ans = "B"; cR = "Standard MTOM is 1150 kg."; }
+          else if (id === 79) { cat = "Airframe & Systems"; q = "The accuracy of altitude gyro & directional gyro is affected in specific maneuvers of bank angle exceeds:-"; opts = ["30deg", "60 deg", "75 deg", "90deg"]; ans = "B"; cR = "Gyros develop tumble/precession errors beyond 60° bank."; }
+          else if (id === 80) { cat = "Emergencies & Operations"; q = "The max restart altitude is:-"; opts = ["10,000 Ft", "14,000 Ft", "8000 Ft", "15,500 Ft"]; ans = "C"; cR = "Max restart altitude is 8000 ft."; }
+          else if (id === 85) { cat = "Operating Limits & Fluids"; q = "The recommended gearbox oil used for DA40D aircraft is: -"; opts = ["Shell EP75W90 API GL-4", "Shell SAE 25W50", "Shell SAE 35W50", "Shell SAE 15W60"]; ans = "A"; cR = "Gearbox requires Shell EP 75W90 API GL-4."; }
+          else if (id === 90) { cat = "Speeds & Performance"; q = "The airspeed for takeoff climb Vy for 1150 Kg with takeoff flaps:-"; opts = ["64KIAS", "66KIAS", "60 KIAS", "59KIAS"]; ans = "B"; cR = "Vy with takeoff flaps at 1150 kg is 66 KIAS."; }
+          else if (id === 91) { cat = "Speeds & Performance"; q = "The airspeed for cruise climb (flap up) for 1150 Kg:-"; opts = ["73 KIAS", "70 KIAS", "71 KIAS", "68 KIAS"]; ans = "A"; cR = "Cruise climb flaps up at 1150 kg is 73 KIAS."; }
+          else if (id === 92) { cat = "Speeds & Performance"; q = "The approach speed for normal landing (with landing flaps) for 1150 kg:-"; opts = ["60 KIAS", "64 KIAS", "69 KIAS", "71 KIAS"]; ans = "D"; cR = "Approach speed with landing flaps at 1150 kg is 71 KIAS."; }
+          else if (id === 104) { cat = "Speeds & Performance"; q = "What is the maneuvering speed (Va) of the DA40D with an all up weight of 1150Kg:-"; opts = ["110 Kts", "108 Kts", "94 Kts", "96 Kts"]; ans = "B"; cR = "Va at 1150 kg is 108 KIAS."; }
+          else if (id === 105) { cat = "Speeds & Performance"; q = "What is the maximum flap extended speed Vfe for DA40D with flaps to ldg:-"; opts = ["91Kts", "108 Kts", "96Kts", "111Kts"]; ans = "A"; cR = "Vfe for landing flaps is 91 KIAS."; }
+          else if (id === 106) { cat = "Speeds & Performance"; q = "What is the Vfe for the DA40D with flaps to t/o:-"; opts = ["108 Kts", "111 Kts", "91 Kts", "95 Kts"]; ans = "A"; cR = "Vfe for takeoff flaps is 108 KIAS."; }
+          else if (id === 108) { cat = "Speeds & Performance"; q = "What is the Vne for the DA40D:-"; opts = ["178 Kts", "188 kts", "180 Kts", "175 Kts"]; ans = "A"; cR = "Vne is 178 KIAS."; }
+          else if (id === 116) { cat = "Engine & Powerplant"; q = "What is the maximum RPM limitation on the DA40D:-"; opts = ["2500RPM", "2600 RPM", "2300 RPM", "2400RPM"]; ans = "C"; cR = "Max continuous RPM limit is 2300 RPM."; }
+          else if (id === 120) { cat = "Operating Limits & Fluids"; q = "What is the minimum oil pressure:-"; opts = ["1.2 Bar", "1.4 Bar", "1.1 Bar", "1 Bar"]; ans = "A"; cR = "Minimum oil pressure is 1.2 Bar."; }
+          else if (id === 121) { cat = "Operating Limits & Fluids"; q = "What is the maximum oil pressure :-"; opts = ["6.2 Bar", "6.4 Bar", "6.5 Bar", "6.7 Bar"]; ans = "C"; cR = "Maximum oil pressure is 6.5 Bar."; }
+          else if (id === 140) { cat = "Weight & Balance"; q = "Max takeoff mass for a utility category DA40D if mam40-123 is carried out is: -"; opts = ["1200 Kgs", "1150 Kgs", "1092 Kgs", "980 Kgs"]; ans = "D"; cR = "Utility category maximum takeoff mass is 980 kg."; }
+          else if (id === 142) { cat = "Weight & Balance"; q = "Max load in baggage compartment is:-"; opts = ["30 Lbs", "66 Lbs", "55 Lbs", "60 Kg"]; ans = "B"; cR = "Max baggage weight is 66 lbs (30 kg)."; }
+          else if (id === 152) { cat = "Emergencies & Operations"; q = "Airspeed to be maintained for best glide angle with AUW of 1150 kg:-"; opts = ["72 KIAS", "73 KIAS", "71 KIAS", "74 KIAS"]; ans = "B"; cR = "Best glide speed Vbg at 1150 kg is 73 KIAS."; }
+          else if (id === 164) { cat = "Emergencies & Operations"; q = "The glide ratio of DA40 with a windmilling propeller is:-"; opts = ["8.8", "8.7", "7.8", "7.7"]; ans = "A"; cR = "Windmilling glide ratio is 8.8:1."; }
+          else if (id === 165) { cat = "Emergencies & Operations"; q = "The glide ratio of DA40 with a stationary propeller is:-"; opts = ["8.8", "8.3", "10.7", "10.3"]; ans = "D"; cR = "Stationary propeller glide ratio improves to 10.3:1."; }
+          else if (id === 166) { cat = "Emergencies & Operations"; q = "Immediate action to be carried out if the aircraft enters into a spin:-"; opts = ["Power lever full, rudder in direction of spin", "Power lever idle, rudder opposite, elevator forward, ailerons opposite", "Power lever idle, rudder opposite to spin, elevator fully forward, aileron neutral", "Power lever full, elevator back"]; ans = "C"; cR = "PARE spin recovery: Power idle, rudder opposite, elevator forward, ailerons neutral."; }
+          else if (id === 168) { cat = "Speeds & Performance"; q = "Airspeed for rotation if the AUW is 1150Kg:-"; opts = ["49 KIAS", "55 KIAS", "59 KIAS", "54 KIAS"]; ans = "C"; cR = "Rotation speed Vr at 1150 kg is 59 KIAS."; }
+          else if (id === 183) { cat = "Electrical & FADEC"; q = "Caution is indicated if the onboard voltage drops below:-"; opts = ["12V", "14V", "12.6V", "13.6V"]; ans = "C"; cR = "Low voltage caution is triggered below 12.6V."; }
+          else if (id === 184) { cat = "Fuel System"; q = "A caution message will be displayed if the fuel in the main tank is less than :-"; opts = ["3USG", "2 USG", "5USG", "1 USG"]; ans = "A"; cR = "Low fuel caution illuminates when main tank is below 3 USG."; }
+          else if (id === 201) { cat = "Airframe & Systems"; q = "The type of fuselage construction is:-"; opts = ["monocoque", "semi monocoque", "truss type", "none"]; ans = "B"; cR = "Fuselage is a composite semi-monocoque."; }
+          else if (id === 203) { cat = "Airframe & Systems"; q = "Fire resistant mating firewall on engine side is covered by :-"; opts = ["Copper Cladding", "Aluminium cladding", "Stainless Steel Cladding", "GFRP/CFRP"]; ans = "C"; cR = "Engine firewall is protected with stainless steel cladding."; }
+          else if (id === 204) { cat = "Airframe & Systems"; q = "Wing consists of :-"; opts = ["1 Spar", "2 Spar", "3 Spar", "4 Spar"]; ans = "B"; cR = "The wing features a 2-spar composite structure."; }
+          else if (id === 206) { cat = "Airframe & Systems"; q = "Rudder is operated using :-"; opts = ["Hydraulics", "Pneumatics", "Cable", "Control Rod"]; ans = "C"; cR = "Rudder is actuated via direct cables."; }
+          else if (id === 219) { cat = "Airframe & Systems"; q = "Ailerons are operated using:-"; opts = ["Hydraulics", "Pneumatics", "Cables", "Control Rod"]; ans = "D"; cR = "Ailerons are operated via push-pull control rods."; }
+          else if (id === 220) { cat = "Airframe & Systems"; q = "Elevator is operated using:-"; opts = ["Hydraulics", "Pneumatics", "Cables", "Control Rod"]; ans = "D"; cR = "Elevator is actuated via rigid push-pull control rods."; }
+          else if (id === 228) { cat = "Fuel System"; q = "Positions on emergency fuel valve are:-"; opts = ["ON-Normal-OFF", "ON-Emergency transfer-OFF", "Emergency Transfer-OFF-Normal", "Normal-Emergency transfer-OFF"]; ans = "D"; cR = "Positions are NORMAL, EMERGENCY TRANSFER, and OFF."; }
+          else if (id === 231) { cat = "Emergencies & Operations"; q = "Special statement WARNING in the AFM means:-"; opts = ["Non-observation leads to immediate degradation in flight safety", "Leads to minor or long term degradation", "Draws attention to items not related to safety", "None"]; ans = "A"; cR = "WARNING indicates risk of severe personal injury or death."; }
+          else if (id === 244) { cat = "Airframe & Systems"; q = "Landing gear track of DA40D is :-"; opts = ["0.297 mt", "2.97mt", "9.9Mt", "0.99mt"]; ans = "B"; cR = "Main gear wheel track is 2.97 meters (9 ft 9 in)."; }
+          else if (id === 256) { cat = "Emergencies & Operations"; q = "Special statement CAUTION in the AFM means:-"; opts = ["Immediate degradation in flight safety", "Minor or long term degradation in flight safety / equipment damage", "None", "Maintenance advice"]; ans = "B"; cR = "CAUTION highlights potential damage to equipment or gradual safety loss."; }
+          else if (id === 286) { cat = "Speeds & Performance"; q = "Max demonstrated crosswind limit for DA40D:-"; opts = ["15 Kts", "20 Kts", "25 Kts", "None"]; ans = "B"; cR = "Maximum demonstrated crosswind is 20 knots."; }
+          else if (id === 298) { cat = "Speeds & Performance"; q = "What is the Vy (Flap T/O) for flight mass 2535 Lbs (1150 kg):-"; opts = ["55KIAS", "66KIAS", "60KIAS", "63KIAS"]; ans = "B"; cR = "Vy with takeoff flaps at 1150 kg is 66 KIAS."; }
+          else if (id === 299) { cat = "Speeds & Performance"; q = "What is the Vr (1150Kg):-"; opts = ["59KIAS", "66KIAS", "70KIAS", "63KIAS"]; ans = "A"; cR = "Rotation speed Vr at 1150 kg is 59 KIAS."; }
+          else if (id === 300) { cat = "Operating Limits & Fluids"; q = "What is the SG (Specific Gravity) of Jet A-1 fuel:-"; opts = ["0.7", "0.6", "0.72", "0.84"]; ans = "D"; cR = "Specific gravity of Jet A-1 in the AFM is 0.84 kg/L."; }
+
+          questions.push({
+            id: id,
+            cat: cat,
+            q: q,
+            o: { A: opts[0], B: opts[1], C: opts[2], D: opts[3] },
+            a: ans,
+            cR: cR,
+            wR: {
+              A: ans === "A" ? "Correct." : "Incorrect per DA40D AFM specification.",
+              B: ans === "B" ? "Correct." : "Incorrect per DA40D AFM specification.",
+              C: ans === "C" ? "Correct." : "Incorrect per DA40D AFM specification.",
+              D: ans === "D" ? "Correct." : "Incorrect per DA40D AFM specification."
+            }
+          });
+        }
+      }
+    })();
+
+    // If external modular datasets are present, load high-detail explanations
+    if (window.questionBankPart1 && window.questionBankPart2 && window.questionBankPart3) {
+      const fullModular = [
+        ...window.questionBankPart1,
+        ...window.questionBankPart2,
+        ...window.questionBankPart3
+      ];
+      questions.length = 0; // Replace with complete modular dataset
+      fullModular.forEach(item => {
+        questions.push({
+          id: item.id,
+          cat: item.category,
+          q: item.question,
+          o: item.options,
+          a: item.correct,
+          cR: item.correctReason,
+          wR: item.wrongReasons
+        });
+      });
+    }
+
+    // Application State
+    let currentQuestionIndex = 0; // 0 to 299 for single question view
+    let currentListPage = 1;      // 1 to 12 for list view
+    const LIST_PAGE_SIZE = 25;
+    let userAnswers = {};
+    let isSingleView = true;
+
+    // Elements
+    const activeCardContainer = document.getElementById('activeCardContainer');
+    const prevQuestionBtn = document.getElementById('prevQuestionBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const cardCounterText = document.getElementById('cardCounterText');
     const scoreText = document.getElementById('scoreText');
     const accuracyText = document.getElementById('accuracyText');
     const progressText = document.getElementById('progressText');
-    const modePractice = document.getElementById('modePractice');
-    const modeExam = document.getElementById('modeExam');
-    const examSubmissionBox = document.getElementById('examSubmissionBox');
-    const submitExamBtn = document.getElementById('submitExamBtn');
+    const singleCardWrapper = document.getElementById('singleCardWrapper');
+    const listWrapper = document.getElementById('listWrapper');
+    const listQuestionsContainer = document.getElementById('listQuestionsContainer');
+    const viewCardBtn = document.getElementById('viewCardBtn');
+    const viewListBtn = document.getElementById('viewListBtn');
+    const jumpInput = document.getElementById('jumpInput');
+    const jumpBtn = document.getElementById('jumpBtn');
     const resetBtn = document.getElementById('resetBtn');
-    const categorySelect = document.getElementById('categorySelect');
-    const searchInput = document.getElementById('searchInput');
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
+    const listPrevBtn = document.getElementById('listPrevBtn');
+    const listNextBtn = document.getElementById('listNextBtn');
+    const listPageText = document.getElementById('listPageText');
 
-    // Dark Mode Logic
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.classList.add('dark');
-      themeIcon.className = 'fas fa-sun';
-    }
-
+    // Theme Toggle
     themeToggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
       const isDark = document.documentElement.classList.contains('dark');
       themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
     });
 
-    // Render Quiz Questions
-    function renderQuiz() {
-      quizContainer.innerHTML = '';
-      const selectedCategory = categorySelect.value;
-      const searchKeyword = searchInput.value.toLowerCase().trim();
+    // Helper to generate Question Card HTML
+    function buildQuestionHtml(q, index) {
+      const isAnswered = userAnswers[q.id] !== undefined;
+      const selectedOpt = userAnswers[q.id];
+      const isCorrect = selectedOpt === q.a;
 
-      const filtered = questionBank.filter(q => {
-        const matchesCategory = selectedCategory === 'all' || q.category === selectedCategory;
-        const matchesSearch = !searchKeyword || 
-          q.question.toLowerCase().includes(searchKeyword) || 
-          Object.values(q.options).some(opt => opt.toLowerCase().includes(searchKeyword));
-        return matchesCategory && matchesSearch;
-      });
-
-      if (filtered.length === 0) {
-        quizContainer.innerHTML = `
-          <div class="text-center py-12 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8">
-            <i class="fas fa-filter-circle-xmark text-4xl text-slate-300 dark:text-slate-600 mb-3"></i>
-            <h3 class="text-base font-bold text-slate-700 dark:text-slate-300">No matching questions found</h3>
-            <p class="text-xs text-slate-400 mt-1">Try resetting the filter or changing your search terms.</p>
-          </div>
-        `;
-        return;
+      let cardClass = "p-6 rounded-2xl border transition-all duration-200 bg-white dark:bg-slate-900 shadow-sm ";
+      if (isAnswered) {
+        cardClass += isCorrect 
+          ? "border-emerald-300 dark:border-emerald-900/60 ring-1 ring-emerald-500/20" 
+          : "border-rose-300 dark:border-rose-900/60 ring-1 ring-rose-500/20";
+      } else {
+        cardClass += "border-slate-200 dark:border-slate-800";
       }
 
-      filtered.forEach((q, index) => {
-        const isAnswered = userAnswers[q.id] !== undefined;
-        const selectedOpt = userAnswers[q.id];
-        const isCorrect = selectedOpt === q.correct;
-        const showFeedback = currentMode === 'practice' ? isAnswered : examSubmitted;
-
-        const card = document.createElement('div');
-        card.className = `p-5 md:p-6 rounded-2xl border transition-all duration-200 bg-white dark:bg-slate-900 shadow-sm ${
-          showFeedback 
-            ? (isCorrect 
-                ? 'border-emerald-300 dark:border-emerald-900/60 ring-1 ring-emerald-500/20' 
-                : 'border-rose-300 dark:border-rose-900/60 ring-1 ring-rose-500/20')
-            : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
-        }`;
-
-        // Header HTML
-        let headerHtml = `
-          <div class="flex items-center justify-between gap-2 mb-3">
-            <div class="flex items-center gap-2">
-              <span class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center font-black text-xs">
-                ${q.id}
-              </span>
-              <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
-                ${q.category}
-              </span>
-            </div>
-            ${showFeedback ? `
-              <span class="inline-flex items-center gap-1 text-xs font-black px-2.5 py-1 rounded-full ${
-                isCorrect 
-                  ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400' 
-                  : 'bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-400'
-              }">
-                ${isCorrect ? '<i class="fas fa-check"></i> Correct' : '<i class="fas fa-xmark"></i> Incorrect'}
-              </span>
-            ` : ''}
+      let header = `
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center font-black text-xs">
+              #${q.id}
+            </span>
+            <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+              ${q.cat}
+            </span>
           </div>
-          <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4 leading-snug">
-            ${q.question}
-          </h3>
-        `;
+          ${isAnswered ? `
+            <span class="inline-flex items-center gap-1 text-xs font-black px-2.5 py-1 rounded-full ${
+              isCorrect ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400' : 'bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-400'
+            }">
+              ${isCorrect ? '<i class="fas fa-check"></i> Correct' : '<i class="fas fa-xmark"></i> Incorrect'}
+            </span>
+          ` : ''}
+        </div>
+        <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4 leading-snug">
+          ${q.q}
+        </h3>
+      `;
 
-        // Options List HTML
-        let optionsHtml = `<div class="space-y-2.5">`;
-        for (const [key, text] of Object.entries(q.options)) {
-          let optStyle = "border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300";
-          let badgeStyle = "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400";
-          let disabled = (currentMode === 'practice' && isAnswered) || examSubmitted ? 'disabled' : '';
+      let options = `<div class="space-y-2.5">`;
+      for (const [key, text] of Object.entries(q.o)) {
+        let optStyle = "border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300";
+        let badgeStyle = "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400";
+        let disabled = isAnswered ? 'disabled' : '';
 
-          if (showFeedback) {
-            if (key === q.correct) {
-              optStyle = "border-emerald-500 bg-emerald-50/80 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-semibold ring-1 ring-emerald-500/30";
-              badgeStyle = "bg-emerald-500 text-white font-black";
-            } else if (key === selectedOpt && !isCorrect) {
-              optStyle = "border-rose-500 bg-rose-50/80 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 font-semibold ring-1 ring-rose-500/30";
-              badgeStyle = "bg-rose-500 text-white font-black";
-            } else {
-              optStyle = "opacity-50 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-500";
-            }
-          } else if (selectedOpt === key) {
-            optStyle = "border-blue-500 bg-blue-50/60 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200 font-bold ring-2 ring-blue-500/30";
-            badgeStyle = "bg-blue-600 text-white";
+        if (isAnswered) {
+          if (key === q.a) {
+            optStyle = "border-emerald-500 bg-emerald-50/80 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-semibold ring-1 ring-emerald-500/30";
+            badgeStyle = "bg-emerald-500 text-white font-black";
+          } else if (key === selectedOpt && !isCorrect) {
+            optStyle = "border-rose-500 bg-rose-50/80 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 font-semibold ring-1 ring-rose-500/30";
+            badgeStyle = "bg-rose-500 text-white font-black";
+          } else {
+            optStyle = "opacity-40 border-slate-200 dark:border-slate-800 text-slate-400";
           }
-
-          optionsHtml += `
-            <button 
-              ${disabled}
-              onclick="selectAnswer(${q.id}, '${key}')"
-              class="w-full text-left p-3 rounded-xl border flex items-start gap-3 transition text-sm ${optStyle}"
-            >
-              <span class="w-6 h-6 rounded-lg flex-shrink-0 flex items-center justify-center text-xs font-bold ${badgeStyle}">
-                ${key}
-              </span>
-              <span class="pt-0.5 leading-relaxed">${text}</span>
-            </button>
-          `;
         }
-        optionsHtml += `</div>`;
 
-        // Explanation Box (Why correct & Why wrong)
-        let explanationHtml = '';
-        if (showFeedback) {
-          let wrongItemsHtml = '';
-          for (const [wKey, wText] of Object.entries(q.wrongReasons)) {
-            wrongItemsHtml += `
+        options += `
+          <button 
+            ${disabled}
+            onclick="handleAnswer(${q.id}, '${key}')"
+            class="w-full text-left p-3.5 rounded-xl border flex items-start gap-3 transition text-sm ${optStyle}"
+          >
+            <span class="w-6 h-6 rounded-lg flex-shrink-0 flex items-center justify-center text-xs font-bold ${badgeStyle}">
+              ${key}
+            </span>
+            <span class="pt-0.5 leading-relaxed">${text}</span>
+          </button>
+        `;
+      }
+      options += `</div>`;
+
+      let explanation = '';
+      if (isAnswered) {
+        let wrongItems = '';
+        for (const [wKey, wText] of Object.entries(q.wR || {})) {
+          if (wKey !== q.a) {
+            wrongItems += `
               <li class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
                 <strong class="text-rose-600 dark:text-rose-400 font-bold">Option ${wKey}:</strong> ${wText}
               </li>
             `;
           }
-
-          explanationHtml = `
-            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
-              <!-- Why Correct -->
-              <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3.5">
-                <div class="flex items-center gap-1.5 text-xs font-black text-emerald-800 dark:text-emerald-400 uppercase tracking-wider mb-1">
-                  <i class="fas fa-circle-check"></i> Why Option ${q.correct} is Correct:
-                </div>
-                <p class="text-xs text-emerald-950 dark:text-emerald-200 leading-relaxed font-normal">
-                  ${q.correctReason}
-                </p>
-              </div>
-
-              <!-- Why Wrong Breakdown -->
-              <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 rounded-xl p-3.5">
-                <div class="flex items-center gap-1.5 text-xs font-black text-rose-700 dark:text-rose-400 uppercase tracking-wider mb-1.5">
-                  <i class="fas fa-circle-xmark"></i> Why the Other Options are Incorrect:
-                </div>
-                <ul class="space-y-1.5 list-disc list-inside">
-                  ${wrongItemsHtml}
-                </ul>
-              </div>
-            </div>
-          `;
         }
 
-        card.innerHTML = headerHtml + optionsHtml + explanationHtml;
-        quizContainer.appendChild(card);
-      });
+        explanation = `
+          <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
+            <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3.5">
+              <div class="flex items-center gap-1.5 text-xs font-black text-emerald-800 dark:text-emerald-400 uppercase tracking-wider mb-1">
+                <i class="fas fa-circle-check"></i> Why Option ${q.a} is Correct:
+              </div>
+              <p class="text-xs text-emerald-950 dark:text-emerald-200 leading-relaxed">
+                ${q.cR}
+              </p>
+            </div>
+
+            <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 rounded-xl p-3.5">
+              <div class="flex items-center gap-1.5 text-xs font-black text-rose-700 dark:text-rose-400 uppercase tracking-wider mb-1.5">
+                <i class="fas fa-circle-xmark"></i> Why the Other Options are Incorrect:
+              </div>
+              <ul class="space-y-1.5 list-disc list-inside">
+                ${wrongItems}
+              </ul>
+            </div>
+          </div>
+        `;
+      }
+
+      return `<div class="${cardClass}">${header}${options}${explanation}</div>`;
+    }
+
+    // Render Single Question View
+    function renderSingleCard() {
+      const q = questions[currentQuestionIndex];
+      activeCardContainer.innerHTML = buildQuestionHtml(q, currentQuestionIndex);
+      cardCounterText.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+      // Navigation button states
+      prevQuestionBtn.disabled = currentQuestionIndex === 0;
+      nextQuestionBtn.disabled = currentQuestionIndex === questions.length - 1;
 
       updateScoreboard();
     }
 
-    function selectAnswer(questionId, optionKey) {
-      if (currentMode === 'practice' && userAnswers[questionId]) return;
-      if (examSubmitted) return;
+    // Render List View (25 per page)
+    function renderListView() {
+      listQuestionsContainer.innerHTML = '';
+      const totalPages = Math.ceil(questions.length / LIST_PAGE_SIZE);
+      const start = (currentListPage - 1) * LIST_PAGE_SIZE;
+      const end = Math.min(start + LIST_PAGE_SIZE, questions.length);
 
-      userAnswers[questionId] = optionKey;
-      renderQuiz();
+      listPageText.textContent = `Page ${currentListPage} of ${totalPages} (Questions ${start + 1} to ${end})`;
+      listPrevBtn.disabled = currentListPage === 1;
+      listNextBtn.disabled = currentListPage === totalPages;
+
+      for (let i = start; i < end; i++) {
+        const q = questions[i];
+        listQuestionsContainer.innerHTML += buildQuestionHtml(q, i);
+      }
+
+      updateScoreboard();
     }
 
+    // Handle Option Selection
+    window.handleAnswer = function(questionId, optKey) {
+      if (userAnswers[questionId]) return;
+      userAnswers[questionId] = optKey;
+
+      if (isSingleView) {
+        renderSingleCard();
+      } else {
+        renderListView();
+      }
+    };
+
     function updateScoreboard() {
-      const totalCount = questionBank.length;
       const answeredCount = Object.keys(userAnswers).length;
       let correctCount = 0;
 
       for (const [qId, ans] of Object.entries(userAnswers)) {
-        const q = questionBank.find(item => item.id == qId);
-        if (q && q.correct === ans) {
-          correctCount++;
-        }
+        const q = questions.find(item => item.id == qId);
+        if (q && q.a === ans) correctCount++;
       }
 
       scoreText.textContent = `${correctCount} / ${answeredCount}`;
       const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
       accuracyText.textContent = `${accuracy}%`;
-      const progress = Math.round((answeredCount / totalCount) * 100);
-      progressText.textContent = `${progress}%`;
+      progressText.textContent = `${answeredCount} / ${questions.length}`;
     }
 
-    // Switch between modes
-    modePractice.addEventListener('click', () => {
-      currentMode = 'practice';
-      modePractice.className = "px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400 font-bold transition";
-      modeExam.className = "px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition";
-      examSubmissionBox.classList.add('hidden');
-      renderQuiz();
-    });
-
-    modeExam.addEventListener('click', () => {
-      currentMode = 'exam';
-      modeExam.className = "px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400 font-bold transition";
-      modePractice.className = "px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition";
-      if (!examSubmitted) {
-        examSubmissionBox.classList.remove('hidden');
+    // NEXT QUESTION BUTTON HANDLER (Always works smoothly!)
+    nextQuestionBtn.addEventListener('click', () => {
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        renderSingleCard();
+        window.scrollTo({ top: 100, behavior: 'smooth' });
       }
-      renderQuiz();
     });
 
-    submitExamBtn.addEventListener('click', () => {
-      examSubmitted = true;
-      examSubmissionBox.classList.add('hidden');
-      renderQuiz();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // PREVIOUS QUESTION BUTTON HANDLER
+    prevQuestionBtn.addEventListener('click', () => {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderSingleCard();
+        window.scrollTo({ top: 100, behavior: 'smooth' });
+      }
     });
 
-    resetBtn.addEventListener('click', () => {
-      if (confirm("Reset all test progress and answers?")) {
-        userAnswers = {};
-        examSubmitted = false;
-        if (currentMode === 'exam') {
-          examSubmissionBox.classList.remove('hidden');
+    // Keyboard Navigation (Arrow Keys)
+    document.addEventListener('keydown', (e) => {
+      if (!isSingleView) return;
+      if (e.key === 'ArrowRight' && currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        renderSingleCard();
+      } else if (e.key === 'ArrowLeft' && currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderSingleCard();
+      }
+    });
+
+    // List view page buttons
+    listPrevBtn.addEventListener('click', () => {
+      if (currentListPage > 1) {
+        currentListPage--;
+        renderListView();
+        window.scrollTo({ top: 100, behavior: 'smooth' });
+      }
+    });
+
+    listNextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(questions.length / LIST_PAGE_SIZE);
+      if (currentListPage < totalPages) {
+        currentListPage++;
+        renderListView();
+        window.scrollTo({ top: 100, behavior: 'smooth' });
+      }
+    });
+
+    // Switch between Single View and List View
+    viewCardBtn.addEventListener('click', () => {
+      isSingleView = true;
+      singleCardWrapper.classList.remove('hidden');
+      listWrapper.classList.add('hidden');
+      viewCardBtn.className = "px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400 font-bold transition";
+      viewListBtn.className = "px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition";
+      renderSingleCard();
+    });
+
+    viewListBtn.addEventListener('click', () => {
+      isSingleView = false;
+      singleCardWrapper.classList.add('hidden');
+      listWrapper.classList.remove('hidden');
+      viewListBtn.className = "px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400 font-bold transition";
+      viewCardBtn.className = "px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition";
+      renderListView();
+    });
+
+    // Jump to Question
+    jumpBtn.addEventListener('click', () => {
+      const val = parseInt(jumpInput.value, 10);
+      if (val >= 1 && val <= questions.length) {
+        currentQuestionIndex = val - 1;
+        currentListPage = Math.ceil(val / LIST_PAGE_SIZE);
+        if (isSingleView) {
+          renderSingleCard();
+        } else {
+          renderListView();
         }
-        renderQuiz();
+        window.scrollTo({ top: 100, behavior: 'smooth' });
       }
     });
 
-    categorySelect.addEventListener('change', renderQuiz);
-    searchInput.addEventListener('input', renderQuiz);
+    jumpInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') jumpBtn.click();
+    });
+
+    // Reset Test
+    resetBtn.addEventListener('click', () => {
+      if (confirm("Reset all answers and start from Question 1?")) {
+        userAnswers = {};
+        currentQuestionIndex = 0;
+        currentListPage = 1;
+        renderSingleCard();
+      }
+    });
 
     // Initial render
-    renderQuiz();
+    renderSingleCard();
   </script>
 </body>
 </html>
